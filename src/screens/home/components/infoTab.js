@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { FlatList, RefreshControl, ActivityIndicator } from 'react-native';
 import { Card } from 'native-base';
 import PropTypes from 'prop-types';
+import * as Animatable from 'react-native-animatable';
 import moment from 'moment';
 import {
   ContentInfo,
@@ -129,30 +130,34 @@ const InfoTab = (props) => {
       {loading ? (
         <ActivityIndicator color={ORANGE_REDDIT} size="large" />
       ) : infoData.length > 0 ? (
-        <FlatList
-          data={infoData}
-          renderItem={renderItems}
-          onEndReached={() =>
-            loadingMore ? getInfo(labelTab, true) : console.log('no more data')
-          }
-          onEndReachedThreshold={0.5}
-          refreshControl={
-            <RefreshControl
-              progressBackgroundColor={ORANGE_REDDIT}
-              tintColor={ORANGE_REDDIT}
-              refreshing={refreshing}
-              onRefresh={reloadData}
-            />
-          }
-          ListFooterComponent={
-            loadingMore ? (
-              <ContainerFooter>
-                <ActivityIndicator color={ORANGE_REDDIT} size="large" />
-              </ContainerFooter>
-            ) : null
-          }
-          keyExtractor={(item, index) => index.toString()}
-        />
+        <Animatable.View animation="bounceInUp" duration={1400} delay={500}>
+          <FlatList
+            data={infoData}
+            renderItem={renderItems}
+            onEndReached={() =>
+              loadingMore
+                ? getInfo(labelTab, true)
+                : console.log('no more data')
+            }
+            onEndReachedThreshold={0.5}
+            refreshControl={
+              <RefreshControl
+                progressBackgroundColor={ORANGE_REDDIT}
+                tintColor={ORANGE_REDDIT}
+                refreshing={refreshing}
+                onRefresh={reloadData}
+              />
+            }
+            ListFooterComponent={
+              loadingMore ? (
+                <ContainerFooter>
+                  <ActivityIndicator color={ORANGE_REDDIT} size="large" />
+                </ContainerFooter>
+              ) : null
+            }
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </Animatable.View>
       ) : (
         <EmptyData textEmpty={labelTab} />
       )}
