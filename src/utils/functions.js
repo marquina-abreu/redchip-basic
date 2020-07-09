@@ -1,3 +1,4 @@
+import { Alert } from 'react-native';
 /**
  * wait time out
  *
@@ -23,5 +24,7 @@ export const handleAlert = (title, content) => {
     },
   ]);
 };
+
+export const URL_REDDIT = 'https://www.reddit.com';
 
 export const listTypeImg = ['jpg', 'png', 'jpeg'];

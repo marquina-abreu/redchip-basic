@@ -6,13 +6,13 @@ import HeaderTest from '../../general/header';
 import { ContainerBase } from '../../general/containers';
 import { BLUE_DARK } from '../../utils/colors';
 import { useNavigation } from '@react-navigation/native';
-import NewsTab from './components/newsTab';
+import InfoTab from './components/infoTab';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [index, setIndex] = useState(0);
 
-  return(
+  return (
     <ContainerBase>
       <HeaderTest colorBase={BLUE_DARK} title="RedChiper" />
       <Tabs
@@ -20,9 +20,6 @@ const HomeScreen = () => {
         initialPage={0}
         onChangeTab={({ i }) => {
           setIndex(i);
-        }}
-        contentProps={{
-          keyboardShouldPersistTaps: 'always',
         }}
         tabBarUnderlineStyle={tabUnderline}
         tabContainerStyle={tabStyle}>
@@ -32,7 +29,7 @@ const HomeScreen = () => {
               <Text>NEW</Text>
             </TabHeading>
           }>
-          <NewsTab active={index} navigation={navigation} />
+          <InfoTab labelTab="new" active={index} navigation={navigation} />
         </Tab>
         <Tab
           heading={
@@ -40,15 +37,15 @@ const HomeScreen = () => {
               <Text>TOP</Text>
             </TabHeading>
           }>
-          <Text>Hola 2</Text>
+          <InfoTab labelTab="top" active={index} navigation={navigation} />
         </Tab>
         <Tab
           heading={
             <TabHeading style={tabStyle}>
-              <Text>POPULAR</Text>
+              <Text>HOT</Text>
             </TabHeading>
           }>
-          <Text>Hola 3</Text>
+          <InfoTab labelTab="hot" active={index} navigation={navigation} />
         </Tab>
       </Tabs>
     </ContainerBase>

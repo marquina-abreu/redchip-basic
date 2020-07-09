@@ -4,7 +4,7 @@ const API_URL = 'https://api.reddit.com/r/pics/';
 
 /**
  * postData, action to send data using the POST method
- * 
+ *
  * @param {string} url - url to concatenate to the base url
  * @param {object} data - data entry
  * @param {boolean} isAuth - check if the request needs an authorization
@@ -26,13 +26,13 @@ export const postData = async (url, data, isAuth = false) => {
     }),
   )
     .then(checkStatus)
-    .then(res => res)
-    .catch(err => Promise.reject(err));
+    .then((res) => res)
+    .catch((err) => Promise.reject(err));
 };
 
 /**
  * getData, action to bring information by the GET method
- * 
+ *
  * @param {string} url - url to concatenate to the base url
  * @param {boolean} isAuth - check if the request needs an authorization
  */
@@ -53,30 +53,28 @@ export const getData = async (url, isAuth = false) => {
     }),
   )
     .then(checkStatus)
-    .then(res => res)
-    .catch(err => Promise.reject(err));
+    .then((res) => res)
+    .catch((err) => Promise.reject(err));
 };
 
 /**
  * checkStatus, incoming response is checked
- * 
+ *
  * @param {*} response - response entry
  * @returns {Promise} promise
  */
 
-const checkStatus = response => {
-  console.log('request ', response);
-
+const checkStatus = (response) => {
   if (response && response.ok) {
     if (response.status === 204) {
       return { status: 'No content response' };
     }
-    return response.json().then(res => {
+    return response.json().then((res) => {
       res.statusCode = response.status;
       return Promise.resolve(res);
     });
   }
-  return response.json().then(err => {
+  return response.json().then((err) => {
     err.statusCode = response.status;
     return Promise.reject(err);
   });
@@ -84,7 +82,7 @@ const checkStatus = response => {
 
 /**
  * checkConnection, verify internet connection for each request
- * 
+ *
  */
 const checkConnection = async () => {
   const isConnected = await checkInternetConnection();
@@ -93,7 +91,6 @@ const checkConnection = async () => {
     throw { statusCode: 1000, message: 'Check your internet connection' };
   }
 };
-
 
 /**
  * checkConnection, verify internet connection for each request
@@ -104,7 +101,7 @@ const checkConnection = async () => {
  */
 const waitTimeOut = (promise, ms = 2500) => {
   return new Promise((resolve, reject) => {
-    setTimeout(function() {
+    setTimeout(function () {
       promise.then(resolve, reject);
     }, ms);
   });
