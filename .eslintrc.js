@@ -1,6 +1,6 @@
 module.exports = {
   parser: 'babel-eslint', // define babel as the parser
-  extends: ['eslint:recommended', 'plugin:react/recommended','prettier'],
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
   plugins: ['react', 'jsdoc'],
   parserOptions: {
     ecmaVersion: 2018, // understands let, const and other features
@@ -10,68 +10,41 @@ module.exports = {
     },
   },
   rules: {
-    'indent': [
-      'error',
-      2,
-    ],
+    indent: ['error', 2],
     'no-undef': 0,
-    'object-curly-spacing': [
-      'error',
-      'always',
-    ],
-    'array-bracket-spacing': [
-      'error',
-      'never',
-    ],
-    'comma-dangle': [
-      'error',
-      'always-multiline',
-    ],
-    'jsx-quotes': [
-      'error',
-      'prefer-double',
-    ],
-    'quotes': [
+    'object-curly-spacing': ['error', 'always'],
+    'array-bracket-spacing': ['error', 'never'],
+    'comma-dangle': ['error', 'always-multiline'],
+    'jsx-quotes': ['error', 'prefer-double'],
+    quotes: [
       'error',
       'single',
       {
-        'allowTemplateLiterals': true,
+        allowTemplateLiterals: true,
       },
     ],
     'react/display-name': 0,
     'react/prop-types': [
       1,
       {
-        'ignore': [
-          'navigation',
-          't',
-        ],
-        'customValidators': [],
+        ignore: ['navigation', 't'],
+        customValidators: [],
       },
     ],
-    'semi': [
-      2,
-      'always',
-    ],
+    semi: [2, 'always'],
     'no-console': [
       'error',
       {
-        'allow': [
-          'warn',
-          'error',
-          'log',
-        ],
+        allow: ['warn', 'error', 'log'],
       },
     ],
     'react/require-default-props': [
       2,
       {
-        'forbidDefaultForRequired': true,
+        forbidDefaultForRequired: true,
       },
     ],
-    'react/no-unused-prop-types': [
-      2,
-    ],
+    'react/no-unused-prop-types': [2],
     'jsdoc/check-alignment': 1,
     // Recommended
     'jsdoc/check-param-names': 1,
@@ -111,4 +84,4 @@ module.exports = {
     browser: true, // add browser globals variables like document and window
     es6: true, // add globals like Set
   },
-}
+};

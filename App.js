@@ -5,7 +5,7 @@ import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 
 const App = () => {
-  useEffect(()=> {
+  useEffect(() => {
     const loadFonts = async () => {
       await Font.loadAsync({
         Roboto: require('native-base/Fonts/Roboto.ttf'),
@@ -15,10 +15,8 @@ const App = () => {
     };
     loadFonts();
   });
-    
-  return(
-    <Navigation />
-  );
+
+  return <Navigation />;
 };
 
 export default App;

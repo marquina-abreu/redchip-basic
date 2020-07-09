@@ -4,9 +4,7 @@ import { ContainerContent, TextEmpty } from '../styles';
 
 const EmptyData = ({ textEmpty }) => (
   <ContainerContent>
-    <TextEmpty>  
-        No {textEmpty} found
-    </TextEmpty>
+    <TextEmpty>No {textEmpty} found</TextEmpty>
   </ContainerContent>
 );
 
